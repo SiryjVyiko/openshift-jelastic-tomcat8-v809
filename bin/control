@@ -38,6 +38,9 @@
 # Author: Jason Brittain <jason.brittain@gmail.com>
 
 # Source function library.
+
+. /etc/jelastic/environment
+
 if [ -x /etc/rc.d/init.d/functions ]; then
 . /etc/rc.d/init.d/functions
 fi
@@ -45,11 +48,11 @@ fi
 SED=$(which sed)
 GREP=$(which grep)
 
-if [ -x /opt/repo/versions/8.0.9/bin/variablesparser.sh ]; then
-    . /opt/repo/versions/8.0.9/bin/variablesparser.sh
+if [ -x /opt/repo/versions/${Version}/bin/variablesparser.sh ]; then
+    . /opt/repo/versions/${Version}/bin/variablesparser.sh
 fi
 
-APP_ENV="/opt/repo/versions/8.0.9/conf/tomcat-env.sh"
+APP_ENV="/opt/repo/versions/${Version}/conf/tomcat-env.sh"
 
 # Source the app config file, if it exists.
 [ -r "$APP_ENV" ] && . "${APP_ENV}"
@@ -83,7 +86,7 @@ fi
 # stuff should be defined here anymore.  Please use the
 # /opt/tomcat/conf/tomcat-env.sh file instead.
 
-SERVERXML="/opt/repo/versions/8.0.9/conf/server.xml"
+SERVERXML="/opt/repo/versions/${Version}/conf/server.xml"
 let RETVAL=0
 JVM_PID="0"
 JVM_RUNNING="false"
@@ -91,7 +94,7 @@ JVM_RUNNING="false"
 
 #################### Hivext mod #####################
 
-TOMCAT_HOME='/opt/repo/versions/8.0.9'
+TOMCAT_HOME="/opt/repo/versions/${Version}"
 TOMCAT_MEMORY_CONF='conf/tomcat-env.sh'
 
 clean_env(){
