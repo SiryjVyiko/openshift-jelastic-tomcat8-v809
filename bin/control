@@ -403,8 +403,7 @@ stop() {
 }
 
 getJvmPid() {
-    JVM_PID="`ps awwx | grep \"jvm=$JVM_ID \" | grep -v grep | head -n 1 | \
-        cut -c -5`"
+    JVM_PID="`ps awwx | grep \"jvm=$JVM_ID \" | grep -v grep | head -n 1 | awk '{print $1}'`";
 }
 
 checkJvmRunning() {
