@@ -18,7 +18,7 @@ MAGICPORT=""
 ON_ERRORS_OPTS=""
 #JAVA_OPTS="-Xmn50M  -Xminf0.1 -Xmaxf0.3 -XX:+UseG1GC -XX:-UseAdaptiveSizePolicy -XX:+UseCompressedOops -server 
 JVM_SUFFIX=`hostname | awk -F "." '{ print $6 }'`
-JAVA_OPTS="-Xmn30M -DReceiverIp=$VTUNIP -DMagicPort=$MAGICPORT $ON_ERRORS_OPTS -server -Djvm=$JVM_ID -Xms32M -Xmx1501M -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true $JPDA_OPTS $JMX_OPTS -DjvmRid=$JVM_SUFFIX -Dorg.apache.catalina.SESSION_COOKIE_NAME=JELSESSIONID -Dorg.apache.catalina.SESSION_PARAMETER_NAME=jelsessionid"
+JAVA_OPTS="-Xmn30M -DReceiverIp=$VTUNIP -DMagicPort=$MAGICPORT $ON_ERRORS_OPTS -server -Djvm=$JVM_ID -Xms32M -Xmx1501M -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses $JPDA_OPTS $JMX_OPTS -DjvmRid=$JVM_SUFFIX -Dorg.apache.catalina.SESSION_COOKIE_NAME=JELSESSIONID -Dorg.apache.catalina.SESSION_PARAMETER_NAME=jelsessionid"
 TOMCAT_USER="jelastic"
 let SHUTDOWN_WAIT=2
 
