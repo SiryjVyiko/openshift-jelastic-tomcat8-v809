@@ -282,10 +282,7 @@ stop() {
         # JVM memory switches -- the stop client shouldn't start with those.
         if [ "$USER" == "$TOMCAT_USER" ]; then
             # We're already the $TOMCAT_USER so just exec the script.
-            exec bash -c "set -a; . $APP_ENV; shopt -s extglob; \
-                export JAVA_OPTS=\"\${JAVA_OPTS//-Xm[sx]+([0-9])[mM]}\"; \
-		export JAVA_OPTS=\"\${JAVA_OPTS//-javaagent*jar}\"; \
-                shopt -u extglob; $TOMCAT_SCRIPT stop" &>/dev/null
+            kill $(ps aux|grep jelastic|grep java|grep tomcat|grep catalina|awk '{print $2}') &>/dev/null && return 0;
         else
             if [ -x /etc/rc.d/init.d/functions -a -x /sbin/runuser ]; then
                 runuser -s /bin/bash - $TOMCAT_USER \
