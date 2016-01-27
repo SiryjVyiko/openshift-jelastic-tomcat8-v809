@@ -1,5 +1,8 @@
 #!/bin/bash -eu
 
+sed -i 's/^RUNAS=".*"/RUNAS="root"/' /etc/jelastic/environment;
+chmod +x /etc/rc.d/init.d/functions
+
 source /etc/jelastic/environment
 
 [ -d $CARTRIDGE_HOME/logs ] && { rm -rf $CARTRIDGE_HOME/logs; ln -s $CARTRIDGE_HOME/versions/$Version/logs $CARTRIDGE_HOME/logs; chown jelastic:jelastic $CARTRIDGE_HOME/logs;  }
