@@ -18,6 +18,3 @@ fi
 
 [ -d "/opt/repo/logs" ] && rmdir /opt/repo/logs
 ln -s /opt/repo/versions/${Version}/logs /opt/repo/logs
-
-sed -i 's/^RUNAS=".*"/RUNAS="root"/' /etc/jelastic/environment;
-chmod +x /etc/rc.d/init.d/functions
