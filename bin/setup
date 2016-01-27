@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 sed -i 's/^RUNAS=".*"/RUNAS="root"/' /etc/jelastic/environment;
+chmod +x /etc/rc.d/init.d/functions
 
 . /etc/jelastic/environment
 
