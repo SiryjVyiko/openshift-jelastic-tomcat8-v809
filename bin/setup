@@ -18,3 +18,5 @@ fi
 
 [ -d "/opt/repo/logs" ] && rmdir /opt/repo/logs
 ln -s /opt/repo/versions/${Version}/logs /opt/repo/logs
+
+sed -i 's/$RUNAS/root/' /etc/rc.d/init.d/cartridge
